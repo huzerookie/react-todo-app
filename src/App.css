@@ -1,0 +1,13 @@
+header, footer, .loginContainer, .welcomeContainer, .manageTodosContainer, .errorContainer {
+    text-align:center
+}
+
+input {
+    padding: 0.2rem;
+    margin: 0.5rem;
+}
+
+button {
+    border: 1px solid black;
+    border-radius: 30px;
+}
