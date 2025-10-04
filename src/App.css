@@ -2,6 +2,25 @@ header, footer, .loginContainer, .welcomeContainer, .manageTodosContainer, .erro
     text-align:center
 }
 
+.header {
+    display: flex;
+    justify-content: center;
+    padding:30px;
+    margin-bottom: 10px;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+}
+
+.header h1 {
+    text-align: center;    
+}
+
+.logout {
+    position:absolute;
+    right: 0%;
+    transform: translateX(-50%)
+}
+
 input {
     padding: 0.2rem;
     margin: 0.5rem;
