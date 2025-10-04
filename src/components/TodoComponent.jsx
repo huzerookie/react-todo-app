@@ -6,6 +6,7 @@ import FooterComponent from "./FooterComponent";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ManageTodosComponent from "./ManageTodosComponent";
 import ErrorComponent from "./ErrorComponent";
+import ProtectedRoute from "../security/ProtectedRoute";
 export default function TodoComponent() {
   return (
     <div>
@@ -14,7 +15,11 @@ export default function TodoComponent() {
         <Routes>
           <Route element={<LoginComponent/>} path="/"/>
           <Route element={<LoginComponent/>} path="/login"/>
-          <Route element={<WelcomeComponent/>} path="/welcome/:username"/>
+          <Route element={
+            <ProtectedRoute>
+            <WelcomeComponent/>
+            </ProtectedRoute>
+          } path="/welcome/:username"/>
           <Route element={<ManageTodosComponent/>} path="/manageTodos"/>
           <Route element={<ErrorComponent/>} path="*"/>
         </Routes>

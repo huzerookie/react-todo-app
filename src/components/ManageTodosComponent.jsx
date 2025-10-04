@@ -26,8 +26,8 @@ export default function ManageTodosComponent() {
         <div>
           <h1>Manage Your Todos</h1>
         </div>
-        <div className="table">
-          <table>
+        <div>
+          <table  className="table">
             <thead>
               <tr>
                 <th>Id</th>
