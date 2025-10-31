@@ -1,7 +1,5 @@
 import { useAuth } from "../security/AuthProvider"
 
-import { useAuth } from "../security/AuthProvider"
-
 export default function HeaderComponent(){
     const authContext = useAuth();
     const logout = () => {
