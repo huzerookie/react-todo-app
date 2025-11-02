@@ -24,6 +24,10 @@ export default function ManageTodosComponent() {
     navigate(`/updateTodo/${id}`)
   }
 
+  const addTodo = () => {
+    navigate('/updateTodo/-1')
+  }
+
   return (
     <>
       <div className="manageTodosContainer container">
@@ -55,7 +59,7 @@ export default function ManageTodosComponent() {
               ))}
             </tbody>
           </table>
-          <button className="btn btn-success">Add New Todo</button>
+          <button className="btn btn-success" onClick={addTodo}>Add New Todo</button>
         </div>
       </div>
     </>

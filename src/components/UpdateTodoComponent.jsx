@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import TodoService from "../services/TodoService";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
@@ -7,16 +7,30 @@ import * as Yup from "yup";
 export default function UpdateTodoComponent() {
   const { id } = useParams();
   const [todo, setTodo] = useState({});
-
+  const navigate = useNavigate();
   const validateTodo = Yup.object({
     course: Yup.string().min("Minimum 6 Characters required").required("Required")
   })
 
-  const submitTodo = () =>{
-    console.log("submitTodo")
+  const submitTodo = async (todo) =>{
+    try{
+     if(id!=-1){ 
+      await TodoService.updateCourse(todo);
+      alert(`Course Updated successfully!!`)
+     } else{
+      await TodoService.addCourse(todo);
+      alert(`Course Added successfully!!`)
+     }
+    navigate("/manageTodos")
+    } catch(e){
+      alert(`Failed: Internal Server Error`)
+      console.log(e)
+    }
+    
   }
   useEffect(() => {
     const setCourse = async () => {
+      if(id==-1) return;
       const { data } = await TodoService.getSingleCourse(id);
       setTodo(data);
       console.log(data);
@@ -30,7 +44,6 @@ export default function UpdateTodoComponent() {
     <Formik
       initialValues={todo}
       enableReinitialize={true}
-      validate={validateTodo}
       onSubmit={submitTodo}
     >
       {() => (
