@@ -8,8 +8,8 @@ export default function LoginComponent({ setAuthentication }) {
   const [isError, setError] = useState(false);
   const authContext = useAuth();
   const navigate = useNavigate();
-  const login = () => {
-    const isAuthenticated = authContext.login(username, password);
+  const login = async () => {
+    const isAuthenticated = await authContext.login(username, password);
     console.log(authContext)
     if (!isAuthenticated) {
       setError(true);
